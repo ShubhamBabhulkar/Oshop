@@ -1,3 +1,4 @@
+import { AuthService } from './service/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -44,7 +45,8 @@ import { LoginComponent } from './clientComponent/login/login.component';
     // NgbModule.forRoot(),
     NgbModule
   ],
-  providers: [],
+  providers: [
+    AuthService  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

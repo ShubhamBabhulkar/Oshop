@@ -9,16 +9,16 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/shopping-cart']" routerLinkActive="router-link-active" >Shopping Cart</a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="!auth.user$" class="nav-item">
         <a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a>
       </li>
-      <li ngbDropdown class="nav-item dropdown">
-        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdownnn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User Name</a>
+      <li ngbDropdown *ngIf="auth.user$" class="nav-item dropdown">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdownnn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{auth.user$.displayName}}</a>
         <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownnn">
           <a class="dropdown-item" [routerLink]="['/my/orders']" routerLinkActive="router-link-active" >My Order</a>
           <a class="dropdown-item" [routerLink]="['/admin/orders']" routerLinkActive="router-link-active" >Manage orders</a>
           <a class="dropdown-item" [routerLink]="['/admin/products']" routerLinkActive="router-link-active" >Manage Products</a>
-          <a class="dropdown-item">Logout</a>
+          <a class="dropdown-item" (click)="logout()">Logout</a>
 
         </div>
       </li>
